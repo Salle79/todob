@@ -1,0 +1,84 @@
+Building builder
+Step 1/13 : FROM salle79/todobackend-base:latest
+ ---> bacc94850094
+Step 2/13 : RUN apt-get update &&     apt-get install -qy python-dev libmysqlclient-dev
+ ---> Using cache
+ ---> bc2c329c1abb
+Step 3/13 : RUN . /appenv/bin/activate &&     pip install wheel --upgrade
+ ---> Using cache
+ ---> 02005080c5dc
+Step 4/13 : ENV WHEELHOUSE /wheelhouse PIP_WHEEL_DIR /wheelhouse PIP_FIND_LINKS /wheelhouse XDG_CACHE_HOME /cache
+ ---> Using cache
+ ---> 6b9897066814
+Step 5/13 : VOLUME /wheelhouse
+ ---> Using cache
+ ---> 2d30b8487640
+Step 6/13 : VOLUME /build
+ ---> Using cache
+ ---> 614d371257bd
+Step 7/13 : VOLUME /reports
+ ---> Using cache
+ ---> 57668a317b06
+Step 8/13 : COPY scripts/test.sh /usr/local/bin/test.sh
+ ---> Using cache
+ ---> 3f77dfe5147c
+Step 9/13 : RUN chmod +x /usr/local/bin/test.sh
+ ---> Using cache
+ ---> bc3099eb106b
+Step 10/13 : ENTRYPOINT test.sh
+ ---> Using cache
+ ---> d18c63e8396b
+Step 11/13 : CMD python manage.py test --noinput
+ ---> Using cache
+ ---> 23a6b17a52a8
+Step 12/13 : COPY src /application
+ ---> Using cache
+ ---> 1ed7aa4ead3e
+Step 13/13 : WORKDIR /application
+ ---> Using cache
+ ---> d370dd837a4c
+Successfully built d370dd837a4c
+Successfully tagged dev_builder:latest
+db uses an image, skipping
+Building test
+Step 1/13 : FROM salle79/todobackend-base:latest
+ ---> bacc94850094
+Step 2/13 : RUN apt-get update &&     apt-get install -qy python-dev libmysqlclient-dev
+ ---> Using cache
+ ---> bc2c329c1abb
+Step 3/13 : RUN . /appenv/bin/activate &&     pip install wheel --upgrade
+ ---> Using cache
+ ---> 02005080c5dc
+Step 4/13 : ENV WHEELHOUSE /wheelhouse PIP_WHEEL_DIR /wheelhouse PIP_FIND_LINKS /wheelhouse XDG_CACHE_HOME /cache
+ ---> Using cache
+ ---> 6b9897066814
+Step 5/13 : VOLUME /wheelhouse
+ ---> Using cache
+ ---> 2d30b8487640
+Step 6/13 : VOLUME /build
+ ---> Using cache
+ ---> 614d371257bd
+Step 7/13 : VOLUME /reports
+ ---> Using cache
+ ---> 57668a317b06
+Step 8/13 : COPY scripts/test.sh /usr/local/bin/test.sh
+ ---> Using cache
+ ---> 3f77dfe5147c
+Step 9/13 : RUN chmod +x /usr/local/bin/test.sh
+ ---> Using cache
+ ---> bc3099eb106b
+Step 10/13 : ENTRYPOINT test.sh
+ ---> Using cache
+ ---> d18c63e8396b
+Step 11/13 : CMD python manage.py test --noinput
+ ---> Using cache
+ ---> 23a6b17a52a8
+Step 12/13 : COPY src /application
+ ---> Using cache
+ ---> 1ed7aa4ead3e
+Step 13/13 : WORKDIR /application
+ ---> Using cache
+ ---> d370dd837a4c
+Successfully built d370dd837a4c
+Successfully tagged dev_test:latest
+agent uses an image, skipping
