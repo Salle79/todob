@@ -5,6 +5,8 @@ volumes:
     driver: local
   cache:
     external: true
+  target:
+    external: true
 
 services:
   test:
@@ -29,7 +31,7 @@ services:
       dockerfile: docker/dev/Dockerfile
     volumes:
       - build:/build
-      - ../../target:/wheelhouse
+      - target:/wheelhouse
     entrypoint: "entrypoint.sh"
     command: ["pip", "wheel", "--no-index", "-f /build", "."]
 
