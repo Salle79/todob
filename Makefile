@@ -1,7 +1,7 @@
 # Project variables
-PROJECT_NAME ?= todob
+PROJECT_NAME ?= todobackend
 ORG_NAME ?= salle79
-REPO_NAME ?= todob
+REPO_NAME ?= todobackend
 
 # Filenames
 DEV_COMPOSE_FILE := docker/dev/docker-compose.yml
@@ -45,7 +45,7 @@ test:
 	${INFO} "Pulling latest images..."
 	@ docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) pull
 	${INFO} "Building images..."
-	#@ docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) build --pull test
+	@ docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) build --pull test
 	@ docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) build test
 	${INFO} "Ensuring database is ready..."
 	@ docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) run --rm agent
@@ -67,7 +67,7 @@ build:
 
 release:
 	${INFO} "Pulling latest images..."
-	#@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) pull test
+	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) pull test
 	${INFO} "Building images..."
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build app
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build --pull nginx
